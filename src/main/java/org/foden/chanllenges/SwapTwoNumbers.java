@@ -1,4 +1,4 @@
-package org.foden;
+package org.foden.chanllenges;
 
 public class SwapTwoNumbers {
 
