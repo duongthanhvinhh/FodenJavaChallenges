@@ -6,6 +6,7 @@ public class CountVowelsAndConsonantsInString {
 
     public static void main(String[] args) {
         System.out.println(countVowelAndConsonant("ueoaif").get("Vowels"));
+        System.out.println(countVowelAndConsonant("ueoif").get("Vowels"));
         System.out.println(countVowelAndConsonantSecondWay("foden").get("Consonants"));
     }
 
