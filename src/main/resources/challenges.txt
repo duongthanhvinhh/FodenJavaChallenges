@@ -1,0 +1,298 @@
+🧩 Core Java (Basics & OOP) – 20 Challenges
+Reverse a string without using StringBuilder.reverse().
+
+Check if a string is a palindrome.
+
+Find factorial using recursion and iteration.
+
+Generate Fibonacci series up to n.
+
+Swap two numbers without a temp variable.
+
+Count vowels and consonants in a string.
+
+Find duplicate characters in a string.
+
+Implement a custom equals() and hashCode() in a class.
+
+Explain difference between == and .equals().
+
+Demonstrate method overloading vs overriding.
+
+Create an immutable class in Java.
+
+Use final, finally, and finalize() in examples.
+
+Explain difference between String, StringBuilder, and StringBuffer.
+
+Write a program to check Armstrong number.
+
+Find prime numbers up to 100.
+
+Demonstrate abstract class vs interface.
+
+Implement Singleton design pattern.
+
+Explain difference between shallow copy and deep copy.
+
+Create a custom exception and throw it.
+
+Demonstrate try-with-resources for closing streams.
+
+📚 Collections & Generics – 15 Challenges
+Sort a list of strings alphabetically.
+
+Remove duplicates from a list.
+
+Find frequency of elements in a list using Map.
+
+Implement a stack using LinkedList.
+
+Implement a queue using ArrayDeque.
+
+Find the maximum element in a list.
+
+Merge two lists and remove duplicates.
+
+Use HashMap to store employee data and retrieve by ID.
+
+Explain difference between HashMap, TreeMap, and LinkedHashMap.
+
+Demonstrate HashSet vs TreeSet.
+
+Write a generic method to print any array.
+
+Implement a generic class with two type parameters.
+
+Explain type erasure in generics.
+
+Use Comparator and Comparable to sort custom objects.
+
+Demonstrate fail-fast vs fail-safe iterators.
+
+⚡ Streams & Functional Interfaces – 15 Challenges
+Filter even numbers from a list using streams.
+
+Convert list of strings to uppercase using map.
+
+Count occurrences of a word in a list using Collectors.groupingBy.
+
+Find the longest string in a list using reduce.
+
+Sum integers in a list using reduce.
+
+Generate 10 random numbers using Stream.generate.
+
+Sort a list of employees by salary using streams.
+
+Partition a list into even and odd numbers using Collectors.partitioningBy.
+
+Demonstrate Predicate with filter.
+
+Demonstrate Function with map.
+
+Demonstrate Consumer with forEach.
+
+Demonstrate Supplier with Stream.generate.
+
+Demonstrate UnaryOperator with map.
+
+Demonstrate BinaryOperator with reduce.
+
+Explain difference between map and flatMap.
+
+🧵 Concurrency & Multithreading – 10 Challenges
+Create a thread using Thread class.
+
+Create a thread using Runnable.
+
+Demonstrate synchronized keyword.
+
+Implement producer-consumer problem using wait and notify.
+
+Use ExecutorService to run multiple tasks.
+
+Demonstrate Callable and Future.
+
+Explain difference between ConcurrentHashMap and HashMap.
+
+Use CountDownLatch in a program.
+
+Use CyclicBarrier in a program.
+
+Explain difference between volatile and synchronized.
+
+📂 File Handling & I/O – 10 Challenges
+Read a file line by line using BufferedReader.
+
+Write text to a file using FileWriter.
+
+Copy contents from one file to another.
+
+Serialize and deserialize an object.
+
+Read a CSV file and print data.
+
+Write logs to a file with timestamps.
+
+Demonstrate Files.lines() with streams.
+
+Count words in a file.
+
+Find largest line in a file.
+
+Explain difference between byte stream and character stream.
+
+🧪 Testing & Automation-Oriented – 15 Challenges
+Write a JUnit test for a calculator class.
+
+Use @BeforeEach and @AfterEach annotations.
+
+Use @ParameterizedTest in JUnit.
+
+Mock a dependency using Mockito.
+
+Verify method calls using Mockito.
+
+Demonstrate assertThrows in JUnit.
+
+Write integration test for REST API using RestAssured.
+
+Automate login flow using Selenium WebDriver.
+
+Find element by XPath in Selenium.
+
+Handle dropdowns in Selenium.
+
+Handle alerts in Selenium.
+
+Take screenshot in Selenium.
+
+Implement Page Object Model (POM).
+
+Write a test that runs in parallel using TestNG.
+
+Explain difference between JUnit and TestNG.
+
+🛠️ Advanced Java & Design Patterns – 15 Challenges
+Implement Builder pattern.
+
+Implement Factory pattern.
+
+Implement Observer pattern.
+
+Implement Strategy pattern.
+
+Explain difference between checked and unchecked exceptions.
+
+Demonstrate reflection API to get class methods.
+
+Use annotations to mark methods and process them via reflection.
+
+Explain difference between Optional.of, Optional.ofNullable, and Optional.empty.
+
+Demonstrate CompletableFuture.
+
+Explain difference between Stream and ParallelStream.
+
+Implement caching using Map.
+
+Explain difference between ArrayList and CopyOnWriteArrayList.
+
+Demonstrate SoftReference and WeakReference.
+
+Explain difference between String.intern() and normal string.
+
+Implement custom annotation and process it.
+
+🎯 How to Use These Challenges
+Practice coding: Write solutions in an IDE and run unit tests.
+
+Explain concepts verbally: Many interviewers want to hear your reasoning, not just code.
+
+Relate to automation: Show how these Java skills apply to writing maintainable test frameworks, handling concurrency in parallel test runs, or parsing test data files.
+Bạn đã gửi
+Chào bạn! Dưới đây là một ví dụ về Reflection trong Java.
+
+Reflection cho phép một chương trình Java kiểm tra (inspect) hoặc thao tác (manipulate) các lớp, giao diện, trường (fields) và phương thức (methods) tại thời điểm chạy (runtime).
+
+💻 Ví Dụ Về Java Reflection
+Ví dụ này sẽ minh họa cách sử dụng Reflection để:
+
+Lấy thông tin về lớp (Class).
+
+Lấy thông tin về phương thức (Method).
+
+Gọi một phương thức mà không cần biết tên của nó khi viết code (thao tác runtime).
+
+1. Chuẩn bị: Lớp Mẫu
+Chúng ta có một lớp đơn giản tên là Person.
+
+Java
+
+public class Person {
+    private String name;
+    private int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public void sayHello() {
+        System.out.println("Hello, my name is " + name + ".");
+    }
+
+    private String getInfo() {
+        return name + " is " + age + " years old.";
+    }
+}
+2. Sử dụng Reflection
+Bây giờ, chúng ta sẽ sử dụng Reflection để tương tác với lớp Person trong lớp ReflectionExample.
+
+Java
+
+import java.lang.reflect.Method;
+
+public class ReflectionExample {
+    public static void main(String[] args) {
+
+        // 1. Lấy đối tượng Class của lớp Person
+        try {
+            Class<?> personClass = Class.forName("Person");
+
+            System.out.println("1. Tên Class: " + personClass.getName());
+
+            // 2. Tạo một đối tượng Person mới bằng Reflection (constructor mặc định)
+            // Lưu ý: Thường dùng Constructor.newInstance() nhưng dùng Class.getDeclaredConstructor().newInstance() cho ví dụ này
+            Object personObject = personClass.getConstructor(String.class, int.class).newInstance("Alice", 30);
+
+            // --- Lấy thông tin về Phương thức (Methods) ---
+
+            // 3. Lấy thông tin về phương thức công khai (public method)
+            Method helloMethod = personClass.getMethod("sayHello");
+            System.out.println("\n3. Tên Phương thức Công khai: " + helloMethod.getName());
+
+            // 4. Gọi phương thức 'sayHello' tại runtime
+            System.out.print("4. Gọi Phương thức Công khai: ");
+            helloMethod.invoke(personObject); // Gọi sayHello() trên đối tượng personObject
+
+            // --- Thao tác với Phương thức Riêng tư (Private Method) ---
+
+            // 5. Lấy thông tin về phương thức riêng tư (private method)
+            // Phải dùng getDeclaredMethod, không dùng getMethod
+            Method infoMethod = personClass.getDeclaredMethod("getInfo");
+            System.out.println("\n5. Tên Phương thức Riêng tư: " + infoMethod.getName());
+
+            // 6. Cho phép truy cập vào phương thức riêng tư
+            infoMethod.setAccessible(true);
+
+            // 7. Gọi phương thức 'getInfo' riêng tư tại runtime
+            String info = (String) infoMethod.invoke(personObject);
+            System.out.println("7. Gọi Phương thức Riêng tư: " + info);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
