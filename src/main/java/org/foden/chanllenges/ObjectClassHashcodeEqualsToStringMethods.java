@@ -4,8 +4,8 @@ import java.util.*;
 
 public class ObjectClassHashcodeEqualsToStringMethods {
 
-    int age;
-    String name;
+    public int age;
+    public String name;
     ObjectClassHashcodeEqualsToStringMethods(int age, String name){
         this.age = age;
         this.name = name;
@@ -30,7 +30,7 @@ public class ObjectClassHashcodeEqualsToStringMethods {
     //because the hashId of somethings1 != somethings.
     @Override
     public int hashCode(){
-        return Objects.hashCode(age) + 346875555;
+        return Objects.hash(age, name);
     }
 
     public static void main(String[] args) {
@@ -44,5 +44,6 @@ public class ObjectClassHashcodeEqualsToStringMethods {
         HashMap<ObjectClassHashcodeEqualsToStringMethods, String> hashMap = new HashMap<>();
         hashMap.put(objectClassHashcodeEqualsToStringMethods, "Foden");
         System.out.println(hashMap.get(objectClassHashcodeEqualsToStringMethods1));
+
     }
 }
